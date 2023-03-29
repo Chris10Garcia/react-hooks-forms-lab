@@ -12,10 +12,11 @@ function ItemForm(props) {
 
 
   function handleChange(event){
+    const id = uuid()
     const name = event.target.name
     const value = event.target.value
 
-    setFormData({...formData, [name] : value})
+    setFormData({...formData, [name] : value, id : id})
   }
 
   function onItemFormSubmit(event){
