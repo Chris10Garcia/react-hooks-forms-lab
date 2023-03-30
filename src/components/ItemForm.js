@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 
-function ItemForm(props) {
+function ItemForm({onItemFormSubmit}) {
 
   const [formData, setFormData]  = useState (
     { 
@@ -19,17 +19,13 @@ function ItemForm(props) {
     setFormData({...formData, [name] : value, id : id})
   }
 
-  function onItemFormSubmit(event){
-    event.preventDefault()
-    
-
-    console.log(formData)
-  }
 
   return (
     <form 
         className="NewItem"
-        onSubmit={onItemFormSubmit}
+        onSubmit={(event) => {
+          event.preventDefault()
+          onItemFormSubmit(formData)}}
     >
       <label>
         Name:
